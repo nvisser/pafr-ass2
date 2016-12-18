@@ -3,12 +3,9 @@ package ass2;
 import ass2.models.Commands;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class GoodRailUI extends Application
@@ -25,23 +22,10 @@ public class GoodRailUI extends Application
 	@Override
 	public void start(Stage window) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/GoodRail.fxml"));
-		window.setTitle("Hello World");
-
-		//Makes the Textfield
-		final TextField commandInput = new TextField();
-		commandInput.setPromptText("Typ je command");
-
-		//Makes the button and uses the command when pressed
-		button = new Button("Click 4 fun");
-		button.setOnAction(e -> this.commandParser.parse(commandInput.getText()));
-
-        //Sets VBox
-		VBox layout = new VBox(10);
-		layout.setPadding(new Insets(20, 20, 20, 20));
-		layout.getChildren().addAll(commandInput, button);
+        window.setTitle("Thomas de Trein");
 
 		//Sets the scene width and height and shows him
-		Scene scene = new Scene(root, 300, 250);
+		Scene scene = new Scene(root, 600, 400);
 		window.setScene(scene);
 		window.show();
 	}

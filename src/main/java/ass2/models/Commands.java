@@ -2,6 +2,11 @@ package ass2.models;
 
 public class Commands
 {
+	/**
+	 * Parse stuff
+	 *
+	 * @param input String
+	 */
 	public void parse(String input)
 	{
 		String[] args = input.split("\\s+");
@@ -13,8 +18,16 @@ public class Commands
 		{
 			case "new":
 				type = args[1];
+				// new train tr1
 				if (args.length == 3)
+				{
 					this.makeNew(type, args[2]);
+					break;
+				} else if (args.length == 5)
+				{
+					this.makeNew(type, args[2], Integer.parseInt(args[4]));
+					break;
+				}
 				break;
 			case "add":
 				if (!args[2].equals("to"))

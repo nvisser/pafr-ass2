@@ -23,14 +23,16 @@ public class Commands
 				{
 					this.makeNew(type, args[2]);
 					break;
-				} else if (args.length == 5)
+				}
+				// new wagon wg2 numseats 15
+				else if (args.length == 5 && args[3].equals("numseats"))
 				{
 					this.makeNew(type, args[2], Integer.parseInt(args[4]));
 					break;
 				}
 				break;
 			case "add":
-				if (!args[2].equals("to"))
+				if (!args[2].equals("to") || args.length != 4)
 					break;
 				this.add(args[1], args[3]);
 				break;
@@ -41,6 +43,11 @@ public class Commands
 			case "getnumseats":
 				type = args[1];
 				this.getNumseats(type, args[2]);
+				break;
+			case "remove":
+				// remove wg1 from tr1
+				if (!args[2].equals("from"))
+					break;
 				break;
 		}
 	}
@@ -60,6 +67,9 @@ public class Commands
 		} else if (type.equalsIgnoreCase("wagon"))
 		{
 			this.makeNew(type, name, 20);
+		} else
+		{
+			throw new IllegalArgumentException("Argument \"type\" needs to be either train or wagon.");
 		}
 	}
 
@@ -72,6 +82,7 @@ public class Commands
 	 */
 	private void makeNew(String type, String name, int numSeats)
 	{
+		// todo stuff
 	}
 
 	/**

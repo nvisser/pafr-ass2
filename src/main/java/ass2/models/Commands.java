@@ -9,7 +9,7 @@ public class Commands
 	 */
 	public void parse(String input)
 	{
-		System.out.println("Parsing: " + input);
+		System.out.println("[DEBUG] Parsing: " + input);
 		String[] args = input.split("\\s+");
 		String action = args[0];
 		String type;

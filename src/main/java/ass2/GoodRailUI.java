@@ -2,7 +2,9 @@ package ass2;
 
 import ass2.models.Commands;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -21,8 +23,8 @@ public class GoodRailUI extends Application
 	}
 
 	@Override
-	public void start(Stage window) throws Exception
-	{
+	public void start(Stage window) throws Exception {
+		Parent root = FXMLLoader.load(getClass().getResource("/GoodRail.fxml"));
 		window.setTitle("Hello World");
 
 		//Makes the Textfield
@@ -39,7 +41,7 @@ public class GoodRailUI extends Application
 		layout.getChildren().addAll(commandInput, button);
 
 		//Sets the scene width and height and shows him
-		Scene scene = new Scene(layout, 300, 250);
+		Scene scene = new Scene(root, 300, 250);
 		window.setScene(scene);
 		window.show();
 	}

@@ -1,5 +1,6 @@
 package ass2;
 
+import ass2.models.Commands;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -12,6 +13,7 @@ public class GoodRailUI extends Application
 {
 	private Scene scene;
 	private Button button;
+	private Commands commandParser = new Commands();
 
 	public static void main(String[] args)
 	{
@@ -29,7 +31,11 @@ public class GoodRailUI extends Application
 
 		//Makes the button and uses the command when pressed
 		button = new Button("Click 4 fun");
-		button.setOnAction(e -> printCommand(commandInput));
+		button.setOnAction(e ->
+		{
+			printCommand(commandInput);
+			this.commandParser.parse(commandInput.getText());
+		});
 
         //Sets VBox
 		VBox layout = new VBox(10);

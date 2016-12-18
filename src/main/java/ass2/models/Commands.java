@@ -48,6 +48,7 @@ public class Commands
 				// remove wg1 from tr1
 				if (!args[2].equals("from"))
 					break;
+				// todo
 				break;
 		}
 	}
@@ -82,7 +83,7 @@ public class Commands
 	 */
 	private void makeNew(String type, String name, int numSeats)
 	{
-		// todo stuff
+		System.out.println("type = [" + type + "], name = [" + name + "], numSeats = [" + numSeats + "]");
 	}
 
 	/**
@@ -93,7 +94,7 @@ public class Commands
 	 */
 	private void delete(String type, String what)
 	{
-		// todo stuff
+		System.out.println("type = [" + type + "], what = [" + what + "]");
 	}
 
 	/**
@@ -104,7 +105,7 @@ public class Commands
 	 */
 	private void getNumseats(String type, String what)
 	{
-		// todo stuff
+		System.out.println("type = [" + type + "], what = [" + what + "]");
 	}
 
 	/**
@@ -115,6 +116,6 @@ public class Commands
 	 */
 	private void add(String addWhat, String toWhat)
 	{
-		// todo stuff
+		System.out.println("addWhat = [" + addWhat + "], toWhat = [" + toWhat + "]");
 	}
 }

@@ -4,7 +4,7 @@ import ass2.models.Observer;
 
 import java.util.List;
 
-public class Controller A {
+public class Controller All {
     private List<Observer> observers;
 
 	public Controller()

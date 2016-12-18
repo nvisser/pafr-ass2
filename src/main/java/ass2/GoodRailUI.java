@@ -26,17 +26,14 @@ public class GoodRailUI extends Application
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
-
         window = primaryStage;
         window.setTitle("Hello World");
 
-        TextField commandInput = new TextField();
+        final TextField commandInput = new TextField();
         commandInput.setPromptText("Typ je command");
-        commandInput.getText();
 
         button = new Button("Click 4 fun");
-        button.setOnAction(e -> System.out.println("hai"));
+        button.setOnAction(e -> printCommand(commandInput));
 
         VBox layout = new VBox(10);
         layout.setPadding(new Insets(20, 20, 20, 20));
@@ -45,6 +42,10 @@ public class GoodRailUI extends Application
         Scene scene = new Scene(layout, 300, 250);
         window.setScene(scene);
         window.show();
+    }
+
+    private void printCommand(TextField input){
+        System.out.println(input.getText());
     }
 }
 

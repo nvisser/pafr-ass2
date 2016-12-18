@@ -15,7 +15,7 @@ public class Train
         this.id = id;
     }
 
-    public void addWagon(Wagon w){
-        wagonList.add(w);
+    public void addWagon(Wagon wa){
+        wagonList.add(wa);
     }
 }

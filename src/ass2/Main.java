@@ -37,7 +37,7 @@ public class Main extends Application implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
         if (event.getSource() == button) {
-            System.out.println("Hallllo");
+            System.out.println("Halllo");
         }
     }
 }

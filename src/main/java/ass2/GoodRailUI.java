@@ -23,16 +23,20 @@ public class GoodRailUI extends Application
 	{
 		window.setTitle("Hello World");
 
+		//Makes the Textfield
 		final TextField commandInput = new TextField();
 		commandInput.setPromptText("Typ je command");
 
+		//Makes the button and uses the command when pressed
 		button = new Button("Click 4 fun");
 		button.setOnAction(e -> printCommand(commandInput));
 
+        //Sets VBox
 		VBox layout = new VBox(10);
 		layout.setPadding(new Insets(20, 20, 20, 20));
 		layout.getChildren().addAll(commandInput, button);
 
+		//Sets the scene width and height and shows him
 		Scene scene = new Scene(layout, 300, 250);
 		window.setScene(scene);
 		window.show();

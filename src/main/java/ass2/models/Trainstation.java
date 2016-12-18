@@ -10,4 +10,8 @@ public class Trainstation
         trainList.add(t);
     }
 
+    public void removeTrain(Train t){
+        trainList.remove(t);
+    }
+
 }

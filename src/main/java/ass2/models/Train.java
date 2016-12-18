@@ -18,4 +18,8 @@ public class Train
     public void addWagon(Wagon wa){
         wagonList.add(wa);
     }
+
+    public void removeWagon (Wagon w){
+        wagonList.remove(w);
+    }
 }

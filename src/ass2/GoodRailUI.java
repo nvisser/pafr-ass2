@@ -10,7 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class Main extends Application implements EventHandler<ActionEvent> {
+public class GoodRailUI extends Application implements EventHandler<ActionEvent>
+{
 
     private Button button;
 

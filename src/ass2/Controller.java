@@ -22,13 +22,17 @@ public class Controller
 	public void removeObserver(Observer o)
 	{
 		int i = this.observers.indexOf(o);
-		if (i < 0) return;
+		if (i < 0)
+			return;
 		observers.remove(i);
 	}
 
 	public void notifyObservers()
 	{
-		this.observers.forEach((o) -> o.update(null));
+		this.observers.forEach((o) ->
+		{
+			o.update(null);
+		});
 	}
 
 	public void dataChanged()

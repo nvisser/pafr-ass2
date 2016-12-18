@@ -31,11 +31,7 @@ public class GoodRailUI extends Application
 
 		//Makes the button and uses the command when pressed
 		button = new Button("Click 4 fun");
-		button.setOnAction(e ->
-		{
-			printCommand(commandInput);
-			this.commandParser.parse(commandInput.getText());
-		});
+		button.setOnAction(e -> this.commandParser.parse(commandInput.getText()));
 
         //Sets VBox
 		VBox layout = new VBox(10);
@@ -46,11 +42,6 @@ public class GoodRailUI extends Application
 		Scene scene = new Scene(layout, 300, 250);
 		window.setScene(scene);
 		window.show();
-	}
-
-	private void printCommand(TextField input)
-	{
-		System.out.println(input.getText());
 	}
 }
 

@@ -9,9 +9,8 @@ public class Commands
 	 */
 	public void parse(String input)
 	{
+		System.out.println("Parsing: " + input);
 		String[] args = input.split("\\s+");
-		if (args.length < 3)
-			return;
 		String action = args[0];
 		String type;
 		switch (action)
@@ -83,7 +82,7 @@ public class Commands
 	 */
 	private void makeNew(String type, String name, int numSeats)
 	{
-		System.out.println("type = [" + type + "], name = [" + name + "], numSeats = [" + numSeats + "]");
+		System.out.println("[DEBUG] type = [" + type + "], name = [" + name + "], numSeats = [" + numSeats + "]");
 	}
 
 	/**
@@ -94,7 +93,7 @@ public class Commands
 	 */
 	private void delete(String type, String what)
 	{
-		System.out.println("type = [" + type + "], what = [" + what + "]");
+		System.out.println("[DEBUG] type = [" + type + "], what = [" + what + "]");
 	}
 
 	/**
@@ -105,7 +104,7 @@ public class Commands
 	 */
 	private void getNumseats(String type, String what)
 	{
-		System.out.println("type = [" + type + "], what = [" + what + "]");
+		System.out.println("[DEBUG] type = [" + type + "], what = [" + what + "]");
 	}
 
 	/**
@@ -116,6 +115,6 @@ public class Commands
 	 */
 	private void add(String addWhat, String toWhat)
 	{
-		System.out.println("addWhat = [" + addWhat + "], toWhat = [" + toWhat + "]");
+		System.out.println("[DEBUG] addWhat = [" + addWhat + "], toWhat = [" + toWhat + "]");
 	}
 }

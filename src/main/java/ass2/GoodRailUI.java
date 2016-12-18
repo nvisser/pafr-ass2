@@ -4,15 +4,20 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class GoodRailUI extends Application implements EventHandler<ActionEvent>
+public class GoodRailUI extends Application
 {
 
+    private Stage window;
+    private Scene scene;
     private Button button;
 
     public static void main(String[] args) {
@@ -22,24 +27,24 @@ public class GoodRailUI extends Application implements EventHandler<ActionEvent>
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
-        primaryStage.setTitle("Hello World");
-        button = new Button();
-        button.setText("hallo");
 
-        button.setOnAction(this);
+        window = primaryStage;
+        window.setTitle("Hello World");
 
-        StackPane layout = new StackPane();
-        layout.getChildren().add(button);
+        TextField commandInput = new TextField();
+        commandInput.setPromptText("Typ je command");
+        commandInput.getText();
+
+        button = new Button("Click 4 fun");
+        button.setOnAction(e -> System.out.println("hai"));
+
+        VBox layout = new VBox(10);
+        layout.setPadding(new Insets(20, 20, 20, 20));
+        layout.getChildren().addAll(commandInput, button);
+
         Scene scene = new Scene(layout, 300, 250);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
-    @Override
-    public void handle(ActionEvent event) {
-        if (event.getSource() == button) {
-            System.out.println("Halllo");
-        }
+        window.setScene(scene);
+        window.show();
     }
 }
 

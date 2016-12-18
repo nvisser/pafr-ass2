@@ -11,7 +11,10 @@ public class Trainstation
     }
 
     public void removeTrain(Train t){
-        trainList.remove(t);
-    }
+        int i = this.trainList.indexOf(t);
+        if(i > 0){
+            trainList.remove(t);
+        }
 
+    }
 }

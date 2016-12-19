@@ -1,6 +1,5 @@
 package ass2;
 
-import ass2.models.Commands;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,7 +11,6 @@ public class GoodRailUI extends Application
 {
 	private Scene scene;
 	private Button button;
-	private Commands commandParser = new Commands();
 
 	public static void main(String[] args)
 	{

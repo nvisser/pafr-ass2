@@ -6,6 +6,7 @@ public class Trainstation
 {
 	private static Trainstation instance = new Trainstation();
 	private ArrayList<Train> trainList = new ArrayList<Train>();
+	private ArrayList<Wagon> wagonList = new ArrayList<Wagon>();
 
 	private Trainstation()
 	{
@@ -28,8 +29,22 @@ public class Trainstation
     public void removeTrain(Train t){
         int i = this.trainList.indexOf(t);
         if(i > 0){
-            trainList.remove(t);
-        }
+			trainList.remove(i);
+		}
 
     }
+
+	public void addWagon(Wagon w)
+	{
+		wagonList.add(w);
+	}
+
+	public void removeWagon(Wagon w)
+	{
+		int i = this.wagonList.indexOf(w);
+		if (i > 0)
+		{
+			wagonList.remove(i);
+		}
+	}
 }

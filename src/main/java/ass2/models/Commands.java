@@ -1,5 +1,7 @@
 package ass2.models;
 
+import ass2.command.MakeTrain;
+
 public class Commands
 {
 	/**
@@ -62,7 +64,7 @@ public class Commands
 	{
 		if (type.equalsIgnoreCase("train"))
 		{
-			this.makeNew(type, name, 0);
+			new Thread(new MakeTrain(name)).start();
 
 		} else if (type.equalsIgnoreCase("wagon"))
 		{

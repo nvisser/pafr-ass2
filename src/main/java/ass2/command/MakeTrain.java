@@ -5,6 +5,23 @@ package ass2.command;
  */
 public class MakeTrain implements ICommand
 {
+	private String name;
+
+	public MakeTrain(String name)
+	{
+		this.name = name;
+	}
+
+	public String getName()
+	{
+		return name;
+	}
+
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+
 	@Override
 	public void run()
 	{

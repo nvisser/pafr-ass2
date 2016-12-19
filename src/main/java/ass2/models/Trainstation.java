@@ -4,7 +4,22 @@ import java.util.ArrayList;
 
 public class Trainstation
 {
-    private ArrayList<Train> trainList = new ArrayList<Train>();
+	private static Trainstation instance = new Trainstation();
+	private ArrayList<Train> trainList = new ArrayList<Train>();
+
+	private Trainstation()
+	{
+		// Don't make me bro
+	}
+
+	public static Trainstation getInstance()
+	{
+		if (instance == null)
+		{
+			instance = new Trainstation();
+		}
+		return instance;
+	}
 
     public void addTrain(Train t){
         trainList.add(t);

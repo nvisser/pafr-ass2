@@ -1,6 +1,7 @@
 package ass2.models;
 
 import ass2.command.MakeTrain;
+import ass2.command.MakeWagon;
 
 public class Commands
 {
@@ -68,11 +69,12 @@ public class Commands
 
 		} else if (type.equalsIgnoreCase("wagon"))
 		{
-			this.makeNew(type, name, 20);
+			new Thread(new MakeWagon(name, type, 20)).start();
 		} else
 		{
 			throw new IllegalArgumentException("Argument \"type\" needs to be either train or wagon.");
 		}
+		System.out.println("type = [" + type + "], name = [" + name + "]");
 	}
 
 	/**
@@ -84,6 +86,7 @@ public class Commands
 	 */
 	private void makeNew(String type, String name, int numSeats)
 	{
+		new Thread(new MakeWagon(name, type, numSeats)).start();
 		System.out.println("[DEBUG] type = [" + type + "], name = [" + name + "], numSeats = [" + numSeats + "]");
 	}
 

@@ -5,6 +5,17 @@ package ass2.command;
  */
 public class MakeWagon implements ICommand
 {
+	private String name;
+	private String type;
+	private int seats;
+
+	public MakeWagon(String name, String type, int seats)
+	{
+		this.name = name;
+		this.type = type;
+		this.seats = seats;
+	}
+
 	@Override
 	public void run()
 	{

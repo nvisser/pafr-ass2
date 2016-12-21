@@ -30,7 +30,7 @@ public class Commands
 			{
 				System.out.println("[DEBUG] Parsed " + c.getClass().getName());
 				c.process(input);
-				break;
+				return;
 			}
 		}
 		System.out.println("Unknown command");

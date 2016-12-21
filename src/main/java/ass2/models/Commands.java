@@ -47,12 +47,16 @@ public class Commands
 				this.getNumseats(type, args[2]);
 				break;
 			case "remove":
-				// remove wg1 from tr1
 				if (!args[2].equals("from"))
 					break;
-				// todo
+				this.remove(args[1], args[3]);
 				break;
 		}
+	}
+
+	private void remove(String from, String fromWhat)
+	{
+		System.out.println("[DEBUG] from = [" + from + "], fromWhat = [" + fromWhat + "]");
 	}
 
 	/**
@@ -74,7 +78,7 @@ public class Commands
 		{
 			throw new IllegalArgumentException("Argument \"type\" needs to be either train or wagon.");
 		}
-		System.out.println("type = [" + type + "], name = [" + name + "]");
+		System.out.println("[DEBUG] type = [" + type + "], name = [" + name + "]");
 	}
 
 	/**

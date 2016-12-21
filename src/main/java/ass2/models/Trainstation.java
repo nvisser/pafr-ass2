@@ -22,12 +22,12 @@ public class Trainstation
 		return instance;
 	}
 
-	public ArrayList getTrainList()
+	public ArrayList<Train> getTrainList()
 	{
 		return trainList;
 	}
 
-	public ArrayList getWagonList()
+	public ArrayList<Wagon> getWagonList()
 	{
 		return wagonList;
 	}

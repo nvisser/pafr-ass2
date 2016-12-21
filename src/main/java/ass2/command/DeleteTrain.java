@@ -12,15 +12,17 @@ import java.util.regex.Pattern;
  */
 public class DeleteTrain extends AbstractCommand
 {
-    private static final Pattern pattern = Pattern.compile("delete train ([a-z][a-z0-9]*);");
+	private static final Pattern pattern = Pattern.compile("delete train ([a-z][a-z0-9]*);");
 
-    @Override
-    protected Pattern getPattern(){
-        return pattern;
-    }
+	@Override
+	protected Pattern getPattern()
+	{
+		return pattern;
+	}
 
-    @Override
-    protected boolean executeCommand(Matcher matcher){
+	@Override
+	protected boolean executeCommand(Matcher matcher)
+	{
 		ArrayList<Train> a = Trainstation.getInstance().getTrainList();
 		for (Train t : a)
 		{
@@ -30,6 +32,6 @@ public class DeleteTrain extends AbstractCommand
 			}
 		}
 		return true;
-    }
+	}
 
 }

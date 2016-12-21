@@ -3,8 +3,41 @@ package ass2.models;
 import ass2.command.MakeTrain;
 import ass2.command.MakeWagon;
 
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Commands
 {
+	private String whitespacePattern = "[\t\r\n\u000c ]+";
+	private Pattern newObjectRegex = Pattern.compile("^new (train|wagon) ([a-z][a-z0-9]*) ([0-9]+)?;$");
+
+	/**
+	 * Add all matches of a regexp to an ArrayList
+	 *
+	 * @param m The matcher
+	 * @return ArrayList with matches
+	 */
+	private static ArrayList<String> checkMatches(Matcher m)
+	{
+		final ArrayList<String> tmp = new ArrayList<>();
+		try
+		{
+			if (m.find())
+			{
+				for (int i = 1; i <= m.groupCount(); i++)
+				{
+					if (m.group(i) == null || m.group(i).isEmpty()) continue;
+					tmp.add(m.group(i));
+				}
+			}
+		} catch (IllegalStateException e)
+		{
+			e.printStackTrace();
+		}
+		return tmp;
+	}
+
 	/**
 	 * Parse stuff
 	 *
@@ -16,6 +49,7 @@ public class Commands
 		String[] args = input.split("\\s+");
 		String action = args[0];
 		String type;
+
 		switch (action)
 		{
 			case "new":
@@ -126,4 +160,5 @@ public class Commands
 	{
 		System.out.println("[DEBUG] addWhat = [" + addWhat + "], toWhat = [" + toWhat + "]");
 	}
+
 }

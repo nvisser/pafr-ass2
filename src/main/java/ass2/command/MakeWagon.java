@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 /**
  * Created by Brian on 19-12-2016 at 15:09.
  */
-public class MakeWagon implements ICommand
+public class MakeWagon
 {
 	private static final Pattern regex = Pattern.compile("new wagon ([a-z][a-z0-9]*)(?: ([0-9]+))?;");
 	private String name;
@@ -27,7 +27,7 @@ public class MakeWagon implements ICommand
 		return regex;
 	}
 
-	@Override
+
 	public void run()
 	{
 		Wagon w = new Wagon();

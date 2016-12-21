@@ -1,5 +1,9 @@
 package ass2.command;
 
-public interface ICommand extends Runnable
+public interface ICommand
 {
+
+	boolean canProcess(String dsl);
+
+	boolean process(String dsl);
 }

@@ -3,7 +3,7 @@ package ass2.models;
 import java.util.ArrayList;
 
 public class Logger {
-    private ArrayList<String> logcommands;
+    private ArrayList<String> logcommands = new ArrayList<>();
 
     public void addLogcommand(String logcommand){
         logcommands.add(logcommand);

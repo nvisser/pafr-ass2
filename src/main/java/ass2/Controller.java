@@ -19,19 +19,17 @@ public class Controller
 		this.observers.add(o);
 	}
 
-	public void removeObserver(Observer o)
-	{
+	public void removeObserver(Observer o) {
 		int i = this.observers.indexOf(o);
 		if (i < 0)
 			return;
 		observers.remove(i);
 	}
 
-	public void notifyObservers()
-	{
+	public void notifyObservers() {
 		this.observers.forEach((o) ->
 		{
-			o.update(null);
+			o.update();
 		});
 	}
 

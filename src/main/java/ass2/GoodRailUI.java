@@ -18,10 +18,9 @@ public class GoodRailUI extends Application
 	}
 
 	@Override
-	public void start(Stage window) throws Exception
-	{
+	public void start(Stage window) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/GoodRail.fxml"));
-		window.setTitle("Thomas de Trein");
+        window.setTitle("Thomas de Trein");
 
 		//Sets the scene width and height and shows him
 		Scene scene = new Scene(root, 600, 400);

@@ -22,7 +22,7 @@ public class MakeTrain extends AbstractCommand
 	@Override
 	protected boolean executeCommand(Matcher matcher)
 	{
-		Train x = new Train();
+		final Train x = new Train();
 		x.setId(matcher.group(1));
 		Trainstation.getInstance().addTrain(x);
 		return true;

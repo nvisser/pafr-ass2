@@ -6,9 +6,6 @@ import ass2.models.Trainstation;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by Brian on 19-12-2016 at 15:09.
- */
 public class MakeTrain extends AbstractCommand
 {
 	private static final Pattern pattern = Pattern.compile("new train ([a-z][a-z0-9]*);");

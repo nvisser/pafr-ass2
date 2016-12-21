@@ -9,9 +9,6 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by Brian on 19-12-2016 at 15:14.
- */
 public class DeleteWagon extends AbstractCommand {
 	private static final Pattern pattern = Pattern.compile("delete wagon ([a-z][a-z0-9]*);");
 

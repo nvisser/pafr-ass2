@@ -5,6 +5,7 @@ import ass2.models.Trainstation;
 import ass2.models.Wagon;
 
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,11 +23,8 @@ public class DeleteWagon extends AbstractCommand {
 	@Override
 	public boolean executeCommand(Matcher matcher){
 		ArrayList<Wagon> w = Trainstation.getInstance().getWagonList();
-		for(Wagon z : w){
-			if(z.getId().equals(matcher.group(1))){
-				Trainstation.getInstance().removeWagon(z);
-			}
-		}
+		Optional<Wagon> found = w.stream().filter((z) -> z.getId().equals(matcher.group(1))).findFirst();
+		found.ifPresent(wagon -> Trainstation.getInstance().removeWagon(wagon));
 		return true;
 	}
 }

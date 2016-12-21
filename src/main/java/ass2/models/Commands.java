@@ -6,9 +6,11 @@ import ass2.command.MakeWagon;
 
 import java.util.ArrayList;
 
+
 public class Commands
 {
 	private ArrayList<ICommand> commands = new ArrayList<>();
+	private Logger logCommand = new Logger();
 
 	public Commands()
 	{
@@ -29,6 +31,7 @@ public class Commands
 			if (c.canProcess(input))
 			{
 				System.out.println("[DEBUG] Parsed " + c.getClass().getName());
+				logCommand.addLogcommand(input);
 				c.process(input);
 				return;
 			}

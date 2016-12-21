@@ -3,6 +3,7 @@ package ass2.command;
 import ass2.models.Train;
 import ass2.models.Trainstation;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,7 +20,10 @@ public class DeleteTrain extends AbstractCommand
     }
 
     @Override
-    protected Boolean executeCommand(Matcher matcher){
+    protected boolean executeCommand(Matcher matcher){
+        ArrayList a = Trainstation.getInstance().getTrainList();
+        a.remove(matcher.group(1));
+        return true;
     }
 
 }

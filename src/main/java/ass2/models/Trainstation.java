@@ -22,6 +22,10 @@ public class Trainstation
 		return instance;
 	}
 
+	public ArrayList getTrainList(){
+		return trainList;
+	}
+
     public void addTrain(Train t){
         trainList.add(t);
     }

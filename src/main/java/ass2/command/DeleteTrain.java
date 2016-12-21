@@ -20,7 +20,6 @@ public class DeleteTrain extends AbstractCommand
 
     @Override
     protected Boolean executeCommand(Matcher matcher){
-
     }
 
 }

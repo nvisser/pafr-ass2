@@ -22,9 +22,10 @@ public class MakeWagon extends AbstractCommand
 	@Override
 	protected boolean executeCommand(Matcher matcher)
 	{
-		Wagon w = new Wagon();
+		final Wagon w = new Wagon();
 		w.setId(matcher.group(1));
-		w.setSeats(Integer.parseInt(matcher.group(2)));
+		final int seats = matcher.group(2) == null ? 20 : Integer.parseInt(matcher.group(2));
+		w.setSeats(seats);
 		Trainstation.getInstance().addWagon(w);
 		return true;
 	}

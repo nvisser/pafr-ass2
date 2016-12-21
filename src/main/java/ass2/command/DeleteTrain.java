@@ -21,9 +21,15 @@ public class DeleteTrain extends AbstractCommand
 
     @Override
     protected boolean executeCommand(Matcher matcher){
-        ArrayList a = Trainstation.getInstance().getTrainList();
-        a.remove(matcher.group(1));
-        return true;
+		ArrayList<Train> a = Trainstation.getInstance().getTrainList();
+		for (Train t : a)
+		{
+			if (t.getId().equals(matcher.group(1)))
+			{
+				Trainstation.getInstance().removeTrain(t);
+			}
+		}
+		return true;
     }
 
 }

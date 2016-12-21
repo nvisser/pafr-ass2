@@ -9,9 +9,6 @@ import java.util.regex.Pattern;
 
 public class Commands
 {
-	private String whitespacePattern = "[\t\r\n\u000c ]+";
-	private Pattern newObjectRegex = Pattern.compile("^new (train|wagon) ([a-z][a-z0-9]*) ([0-9]+)?;$");
-
 	/**
 	 * Add all matches of a regexp to an ArrayList
 	 *

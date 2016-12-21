@@ -26,7 +26,7 @@ public class Commands
 		{
 			if (c.canProcess(input))
 			{
-				System.out.println("Parsed " + c.getClass());
+				System.out.println("[DEBUG] Parsed " + c.getClass().getName());
 				c.process(input);
 				break;
 			}

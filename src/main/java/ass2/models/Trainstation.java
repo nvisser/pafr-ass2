@@ -22,25 +22,30 @@ public class Trainstation
 		return instance;
 	}
 
-	public ArrayList getTrainList(){
+	public ArrayList getTrainList()
+	{
 		return trainList;
 	}
 
-	public ArrayList getWagonList(){
+	public ArrayList getWagonList()
+	{
 		return wagonList;
 	}
 
-    public void addTrain(Train t){
-        trainList.add(t);
-    }
+	public void addTrain(Train t)
+	{
+		trainList.add(t);
+	}
 
-    public void removeTrain(Train t){
-        int i = this.trainList.indexOf(t);
-        if(i > 0){
+	public void removeTrain(Train t)
+	{
+		int i = this.trainList.indexOf(t);
+		if (i > 0)
+		{
 			trainList.remove(i);
 		}
 
-    }
+	}
 
 	public void addWagon(Wagon w)
 	{

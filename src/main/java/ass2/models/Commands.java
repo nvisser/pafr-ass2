@@ -18,6 +18,7 @@ public class Commands
 		commands.add(new AddWagon());
 		commands.add(new RemoveWagon());
 		commands.add(new WagonSeats());
+		commands.add(new TrainSeats());
 	}
 
 	/**

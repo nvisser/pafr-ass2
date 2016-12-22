@@ -10,7 +10,7 @@ public class Logger {
     public void addLogcommand(String logcommand){
         logcommands.add(logcommand);
         ControllerFX controllerFX = new ControllerFX();
-        controllerFX.addLog(logcommand);
+        System.out.println("test " + logcommand);
     }
     public void removeLogcommand(String logcommand){
         if (logcommands.contains(logcommand)){

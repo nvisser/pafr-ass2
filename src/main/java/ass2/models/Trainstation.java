@@ -69,7 +69,8 @@ public class Trainstation
 	 */
 	public void addTrain(Train t)
 	{
-		trainList.add(t);
+		if (!trainList.contains(t))
+			trainList.add(t);
 	}
 
 	/**
@@ -95,7 +96,8 @@ public class Trainstation
 	 */
 	public void addWagon(Wagon w)
 	{
-		wagonList.add(w);
+		if (!wagonList.contains(w))
+			wagonList.add(w);
 	}
 
 	/**

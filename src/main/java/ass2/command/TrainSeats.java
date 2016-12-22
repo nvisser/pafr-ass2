@@ -8,9 +8,6 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by Casper on 22-12-2016.
- */
 public class TrainSeats extends AbstractCommand {
 
     private static final Pattern pattern = Pattern.compile("getnumseats train ([a-z][a-z0-9]*);");

@@ -13,6 +13,11 @@ public class Trainstation
 		// Don't make me bro
 	}
 
+	public int getWagonSeats(Wagon w){
+		return w.getSeats();
+	}
+
+
 	public static Trainstation getInstance()
 	{
 		if (instance == null)

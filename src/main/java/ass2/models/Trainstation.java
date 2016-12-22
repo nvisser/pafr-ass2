@@ -32,11 +32,21 @@ public class Trainstation
 		return wagonList;
 	}
 
+	/**
+	 * Add a train
+	 *
+	 * @param t Train
+	 */
 	public void addTrain(Train t)
 	{
 		trainList.add(t);
 	}
 
+	/**
+	 * Remove a train
+	 *
+	 * @param t Train
+	 */
 	public void removeTrain(Train t)
 	{
 		int i = this.trainList.indexOf(t);
@@ -48,11 +58,21 @@ public class Trainstation
 	}
 
 
+	/**
+	 * Add a wagon
+	 *
+	 * @param w Wagon
+	 */
 	public void addWagon(Wagon w)
 	{
 		wagonList.add(w);
 	}
 
+	/**
+	 * Remove a wagon
+	 *
+	 * @param w Wagon
+	 */
 	public void removeWagon(Wagon w)
 	{
 		int i = this.wagonList.indexOf(w);
@@ -62,29 +82,59 @@ public class Trainstation
 		}
 	}
 
-	public void addWagonToTrain(Wagon x, Train y){
+	/**
+	 * Add a wagon to train
+	 *
+	 * @param wagon Wagon
+	 * @param train Train
+	 */
+	public void addWagonToTrain(Wagon wagon, Train train)
+	{
+		int trainLoc = this.trainList.indexOf(train);
+		int wagonLoc = this.wagonList.indexOf(wagon);
+		if (trainLoc > 0 && wagonLoc > 0)
+		{
+			// Combine
+			train.addWagon(wagon);
 
-		y.addWagon(x);
+			// Replace in list
+			this.trainList.set(trainLoc, train);
+		}
 	}
 
-	public Wagon findWagon(String xd){
-		for (  Wagon t : wagonList){
-			if (t.getId().equals(xd)){
+	/**
+	 * Find a wagon
+	 *
+	 * @param id String
+	 * @return Wagon
+	 */
+	public Wagon findWagon(String id)
+	{
+		for (Wagon t : wagonList)
+		{
+			if (t.getId().equals(id))
+			{
 				return t;
 			}
 		}
 		return null;
-
 	}
 
-	public Train findTrain(String xdddd){
-		for (Train n : trainList){
-			if (n.getId().equals(xdddd))
+	/**
+	 * Find a train
+	 *
+	 * @param id String
+	 * @return Train
+	 */
+	public Train findTrain(String id)
+	{
+		for (Train n : trainList)
+		{
+			if (n.getId().equals(id))
+			{
 				return n;
-
+			}
 		}
-
 		return null;
-
 	}
 }

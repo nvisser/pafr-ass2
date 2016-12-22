@@ -77,9 +77,9 @@ public class Trainstation
 
 	}
 
-	public Train findTrain(String xddd){
+	public Train findTrain(String xdddd){
 		for (Train n : trainList){
-			if (n.getId().equals(xddd))
+			if (n.getId().equals(xdddd))
 				return n;
 
 		}

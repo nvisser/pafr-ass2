@@ -20,8 +20,9 @@ public class ControllerFX {
 	private Commands commandHandler = new Commands();
 
     @FXML private TextField commandLine;
-    @FXML private ListView loggerDisplay = new ListView();
-    @FXML private TextArea trainsDisplay;
+	@FXML
+	private ListView<String> loggerDisplay = new ListView<>();
+	@FXML private TextArea trainsDisplay;
     @FXML private TextArea commandInputDisplay;
     private int trainCounter;
 

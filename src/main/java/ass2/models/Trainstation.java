@@ -2,13 +2,18 @@ package ass2.models;
 
 import java.util.ArrayList;
 
-public class Trainstation
+public class Trainstation implements Subject
 {
-	private static Trainstation instance = new Trainstation();
+	private CommandInputDisplay commandInputDisplay = new CommandInputDisplay();
+	private LoggerDisplay loggerDisplay = new LoggerDisplay();
+	private TrainDisplay trainDisplay = new TrainDisplay();
+
+	private static Trainstation instance;
 	private ArrayList<Train> trainList = new ArrayList<Train>();
 	private ArrayList<Wagon> wagonList = new ArrayList<Wagon>();
+	private ArrayList<Observer> observers = new ArrayList<>();
 
-	private Trainstation()
+	public Trainstation()
 	{
 		// Don't make me bro
 	}
@@ -69,8 +74,10 @@ public class Trainstation
 	 */
 	public void addTrain(Train t)
 	{
-		if (!trainList.contains(t))
-			trainList.add(t);
+		t.registerObserver(loggerDisplay);
+		trainList.add(t);
+		this.notifyObservers();
+		t.notifyObservers();
 	}
 
 	/**
@@ -96,8 +103,7 @@ public class Trainstation
 	 */
 	public void addWagon(Wagon w)
 	{
-		if (!wagonList.contains(w))
-			wagonList.add(w);
+		wagonList.add(w);
 	}
 
 	/**
@@ -190,5 +196,23 @@ public class Trainstation
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public void registerObserver(Observer o) {
+		observers.add(o);
+	}
+
+	@Override
+	public void removeObserver(Observer o) {
+		observers.remove(o);
+	}
+
+	@Override
+	public void notifyObservers() {
+		for (int i = 0; i < observers.size(); i++) {
+			Observer observer = (Observer) observers.get(i);
+			observer.update();
+		}
 	}
 }

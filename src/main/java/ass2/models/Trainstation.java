@@ -60,4 +60,9 @@ public class Trainstation
 			wagonList.remove(i);
 		}
 	}
+
+	public void addWagonToTrain(Wagon x, Train y){
+
+		y.addWagon(x);
+	}
 }

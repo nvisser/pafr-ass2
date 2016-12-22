@@ -7,6 +7,11 @@ public class Train
 	private String id;
 	private ArrayList<Wagon> wagonList = new ArrayList<Wagon>();
 
+	public ArrayList<Wagon> getWagonList()
+	{
+		return wagonList;
+	}
+
 	public String getId()
 	{
 		return id;

@@ -22,7 +22,11 @@ public class AddWagon extends AbstractCommand
 	{
 		final Trainstation t = Trainstation.getInstance();
 		Wagon wagon = t.findWagon(matcher.group(1));
+		if (wagon == null)
+			return false;
 		Train train = t.findTrain(matcher.group(2));
+		if (train == null)
+			return false;
 		t.addWagonToTrain(wagon, train);
 		return true;
 	}

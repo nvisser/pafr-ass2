@@ -97,10 +97,32 @@ public class Trainstation
 	{
 		int trainLoc = this.trainList.indexOf(train);
 		int wagonLoc = this.wagonList.indexOf(wagon);
-		if (trainLoc > 0 && wagonLoc > 0)
+
+
+		if (!train.getWagonList().contains(wagon) && trainLoc >= 0 && wagonLoc >= 0)
 		{
 			// Combine
 			train.addWagon(wagon);
+
+			// Replace in list
+			this.trainList.set(trainLoc, train);
+		}
+	}
+
+	/**
+	 * Remove wagon from trian
+	 *
+	 * @param wagon Wagon
+	 * @param train Train
+	 */
+	public void removeWagonFromTrain(Wagon wagon, Train train)
+	{
+		int trainLoc = this.trainList.indexOf(train);
+		int wagonLoc = this.wagonList.indexOf(wagon);
+		if (train.getWagonList().contains(wagon) && trainLoc >= 0 && wagonLoc >= 0)
+		{
+			// Unlink
+			train.removeWagon(wagon);
 
 			// Replace in list
 			this.trainList.set(trainLoc, train);

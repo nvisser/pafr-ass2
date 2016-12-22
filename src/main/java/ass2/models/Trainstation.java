@@ -47,6 +47,7 @@ public class Trainstation
 
 	}
 
+
 	public void addWagon(Wagon w)
 	{
 		wagonList.add(w);
@@ -64,5 +65,26 @@ public class Trainstation
 	public void addWagonToTrain(Wagon x, Train y){
 
 		y.addWagon(x);
+	}
+
+	public Wagon findWagon(String xd){
+		for (  Wagon t : wagonList){
+			if (t.getId().equals(xd)){
+				return t;
+			}
+		}
+		return null;
+
+	}
+
+	public Train findTrain(String xdd){
+		for (Train n : trainList){
+			if (n.getId().equals(xdd))
+				return n;
+
+		}
+
+		return null;
+
 	}
 }

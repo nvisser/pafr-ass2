@@ -13,11 +13,6 @@ public class Trainstation
 		// Don't make me bro
 	}
 
-	public int getWagonSeats(Wagon w){
-		return w.getSeats();
-	}
-
-
 	public static Trainstation getInstance()
 	{
 		if (instance == null)
@@ -35,6 +30,36 @@ public class Trainstation
 	public ArrayList<Wagon> getWagonList()
 	{
 		return wagonList;
+	}
+
+	/**
+	 * Return seats for a wagon
+	 *
+	 * @param w Wagon
+	 * @return int
+	 */
+	public int getWagonSeats(Wagon w)
+	{
+		int wagonLoc = this.wagonList.indexOf(w);
+		if (wagonLoc >= 0)
+			return w.getSeats();
+		return 0;
+	}
+
+	/**
+	 * Return seats for a train
+	 *
+	 * @param t Train
+	 * @return int
+	 */
+	public int getWagonSeats(Train t)
+	{
+		int trainLoc = this.trainList.indexOf(t);
+		if (trainLoc >= 0 && t.getWagonList().size() > 0)
+		{
+			return t.getWagonList().stream().mapToInt(Wagon::getSeats).sum();
+		}
+		return 0;
 	}
 
 	/**

@@ -1,31 +1,72 @@
 package ass2;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.stage.Stage;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class GoodRailUI extends Application
-{
-	private Scene scene;
-	private Button button;
+import javax.swing.*;
+
+import ass2.models.CommandInputDisplay;
+import ass2.models.Commands;
+import ass2.models.LoggerDisplay;
+import ass2.models.TrainDisplay;
+
+public class GoodRailUI extends JFrame implements ActionListener{
+
+	private TrainDisplay traindisplay = new TrainDisplay();
+	private LoggerDisplay loggerDisplay = new LoggerDisplay();
+	private CommandInputDisplay commandInputDisplay = new CommandInputDisplay();
+	private Commands commandHandler = new Commands();
+	private JPanel command_panel = new JPanel();
+	private TextField command_text_box = new TextField("", 40);
+	private JButton command_button = new JButton("Execute");
+	private JPanel main_panel = new JPanel();
 
 	public static void main(String[] args)
 	{
-		launch(args);
+		GoodRailUI inst = new GoodRailUI();
+		inst.setLocationRelativeTo(null);
+		inst.setVisible(true);
 	}
 
-	@Override
-	public void start(Stage window) throws Exception {
-		Parent root = FXMLLoader.load(getClass().getResource("/GoodRail.fxml"));
-        window.setTitle("Thomas de Trein");
+	public GoodRailUI(){
+		initGUI();
+	}
 
-		//Sets the scene width and height and shows him
-		Scene scene = new Scene(root, 600, 400);
-		window.setScene(scene);
-		window.show();
+	public void initGUI(){
+
+		main_panel.setLayout(new BorderLayout());
+		main_panel.setSize(new Dimension(800, 600));
+
+		traindisplay.setPreferredSize(new Dimension(800, 300));
+		loggerDisplay.setPreferredSize(new Dimension(350, 200));
+		commandInputDisplay.setPreferredSize(new Dimension(350, 200));
+		command_panel.setPreferredSize(new Dimension(400, 100));
+
+		command_panel.add(command_text_box);
+		command_panel.add(command_button);
+
+		command_button.addActionListener(this);
+
+		main_panel.add(traindisplay, BorderLayout.NORTH);
+		main_panel.add(loggerDisplay, BorderLayout.EAST);
+		main_panel.add(commandInputDisplay, BorderLayout.WEST);
+		main_panel.add(command_panel, BorderLayout.SOUTH);
+
+		this.getContentPane().add(main_panel);
+
+		this.setSize(800, 600);
+		this.setVisible(true);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+	}
+
+	public void actionPerformed(ActionEvent e){
+		if(!command_text_box.equals("")){
+			String command = command_text_box.getText();
+			commandHandler.parse(command);
+		}
 	}
 }
-

@@ -9,12 +9,14 @@ public class Logger {
 
     public void addLogcommand(String logcommand){
         logcommands.add(logcommand);
-        ControllerFX controllerFX = new ControllerFX();
-        System.out.println("test " + logcommand);
     }
     public void removeLogcommand(String logcommand){
         if (logcommands.contains(logcommand)){
             logcommands.remove(logcommand);
         }
+    }
+
+    public ArrayList<String> getLogcommands(){
+        return logcommands;
     }
 }

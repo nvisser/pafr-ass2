@@ -32,7 +32,7 @@ public class ControllerFX {
     @FXML
     public void executeCommand(){
 		commandHandler.parse(commandLine.getText());
-		commandInputDisplay.setText("heyho");
+//		commandInputDisplay.setText("heyho");
         trainCounter += 1;
         trainsDisplay.setText("Een treintje erbij: " + trainCounter);
         addLog(commandLine.getText());

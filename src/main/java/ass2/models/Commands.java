@@ -1,9 +1,6 @@
 package ass2.models;
 
-import ass2.command.DeleteTrain;
-import ass2.command.ICommand;
-import ass2.command.MakeTrain;
-import ass2.command.MakeWagon;
+import ass2.command.*;
 
 import java.util.ArrayList;
 
@@ -18,6 +15,7 @@ public class Commands
 		commands.add(new MakeTrain());
 		commands.add(new MakeWagon());
 		commands.add(new DeleteTrain());
+		commands.add(new DeleteWagon());
 	}
 
 	/**

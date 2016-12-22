@@ -2,10 +2,11 @@ package ass2.models;
 
 import java.util.ArrayList;
 
-public class Train
+public class Train implements Subject
 {
 	private String id;
 	private ArrayList<Wagon> wagonList = new ArrayList<Wagon>();
+	private ArrayList<Observer> observers = new ArrayList<>();
 
 	public ArrayList<Wagon> getWagonList()
 	{
@@ -22,6 +23,7 @@ public class Train
 		this.id = id;
 	}
 
+
 	public void addWagon(Wagon wa)
 	{
 		wagonList.add(wa);
@@ -32,5 +34,23 @@ public class Train
 		int i = this.wagonList.indexOf(w);
 		if (i > 0)
 			wagonList.remove(i);
+	}
+
+	@Override
+	public void registerObserver(Observer o) {
+		observers.add(o);
+	}
+
+	@Override
+	public void removeObserver(Observer o) {
+		observers.add(o);
+	}
+
+	@Override
+	public void notifyObservers() {
+		for (int i = 0; i < observers.size(); i++) {
+			Observer observer = observers.get(i);
+			observer.update();
+		}
 	}
 }

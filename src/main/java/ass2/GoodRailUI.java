@@ -8,10 +8,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import ass2.models.CommandInputDisplay;
-import ass2.models.Commands;
-import ass2.models.LoggerDisplay;
-import ass2.models.TrainDisplay;
+import ass2.models.*;
 
 public class GoodRailUI extends JFrame implements ActionListener{
 
@@ -23,6 +20,7 @@ public class GoodRailUI extends JFrame implements ActionListener{
 	private TextField command_text_box = new TextField("", 40);
 	private JButton command_button = new JButton("Execute");
 	private JPanel main_panel = new JPanel();
+	private Trainstation trainstation = new Trainstation();
 
 	public static void main(String[] args)
 	{
@@ -33,6 +31,7 @@ public class GoodRailUI extends JFrame implements ActionListener{
 
 	public GoodRailUI(){
 		initGUI();
+		trainstation.registerObserver(loggerDisplay);
 	}
 
 	public void initGUI(){

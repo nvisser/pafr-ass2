@@ -7,11 +7,13 @@ public class Logger {
 
     public void addLogcommand(String logcommand){
         logcommands.add(logcommand);
+        Trainstation.getInstance().getLoggerDisplay().update();
     }
     public void removeLogcommand(String logcommand){
         if (logcommands.contains(logcommand)){
             logcommands.remove(logcommand);
         }
+        Trainstation.getInstance().getLoggerDisplay().update();
     }
 
     public ArrayList<String> getLogcommands(){

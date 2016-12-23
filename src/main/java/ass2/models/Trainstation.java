@@ -6,15 +6,24 @@ public class Trainstation implements Subject
 {
 	private static Trainstation instance;
 	private CommandInputDisplay commandInputDisplay = new CommandInputDisplay();
+	private Logger logger = new Logger();
 	private LoggerDisplay loggerDisplay = new LoggerDisplay();
 	private TrainDisplay trainDisplay = new TrainDisplay();
 	private ArrayList<Train> trainList = new ArrayList<Train>();
 	private ArrayList<Wagon> wagonList = new ArrayList<Wagon>();
 	private ArrayList<Observer> observers = new ArrayList<>();
 
-	public Trainstation()
+	private Trainstation()
 	{
 		// Don't make me bro
+	}
+
+	public Logger getLogger() {
+		return logger;
+	}
+
+	public LoggerDisplay getLoggerDisplay() {
+		return loggerDisplay;
 	}
 
 	public static Trainstation getInstance()

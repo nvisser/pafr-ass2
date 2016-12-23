@@ -11,14 +11,13 @@ import ass2.models.*;
 public class GoodRailUI extends JFrame {
 
 	private TrainDisplay traindisplay = new TrainDisplay();
-	private LoggerDisplay loggerDisplay = new LoggerDisplay();
 	private CommandInputDisplay commandInputDisplay = new CommandInputDisplay();
 	private Commands commandHandler = new Commands();
 	private JPanel command_panel = new JPanel();
 	private TextField command_text_box = new TextField("", 40);
 	private JButton command_button = new JButton("Execute");
 	private JPanel main_panel = new JPanel();
-	private Trainstation trainstation = new Trainstation();
+
 
 	public static void main(String[] args)
 	{
@@ -29,7 +28,8 @@ public class GoodRailUI extends JFrame {
 
 	public GoodRailUI(){
 		initGUI();
-		trainstation.registerObserver(loggerDisplay);
+		Trainstation t = Trainstation.getInstance();
+		t.registerObserver(t.getLoggerDisplay());
 	}
 
 	public void initGUI(){
@@ -38,7 +38,7 @@ public class GoodRailUI extends JFrame {
 		main_panel.setSize(new Dimension(800, 600));
 
 		traindisplay.setPreferredSize(new Dimension(800, 300));
-		loggerDisplay.setPreferredSize(new Dimension(350, 200));
+		Trainstation.getInstance().getLoggerDisplay().setPreferredSize(new Dimension(350, 200));
 		commandInputDisplay.setPreferredSize(new Dimension(350, 200));
 		command_panel.setPreferredSize(new Dimension(400, 100));
 
@@ -46,16 +46,16 @@ public class GoodRailUI extends JFrame {
 		command_panel.add(command_button);
 
 		command_button.addActionListener(e -> {
-            if (!command_text_box.equals("")) {
+            if (!command_text_box.getText().isEmpty()) {
                 String command = command_text_box.getText();
                 commandHandler.parse(command);
                 commandInputDisplay.update();
-                loggerDisplay.update();
+//                Trainstation.getInstance().getLoggerDisplay().update();
             }
         });
 
 		main_panel.add(traindisplay, BorderLayout.NORTH);
-		main_panel.add(loggerDisplay, BorderLayout.EAST);
+		main_panel.add(Trainstation.getInstance().getLoggerDisplay(), BorderLayout.EAST);
 		main_panel.add(commandInputDisplay, BorderLayout.WEST);
 		main_panel.add(command_panel, BorderLayout.SOUTH);
 
@@ -63,7 +63,7 @@ public class GoodRailUI extends JFrame {
 
 		this.setSize(800, 600);
 		this.setVisible(true);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 	}
 

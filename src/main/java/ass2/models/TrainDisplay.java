@@ -28,10 +28,10 @@ public class TrainDisplay extends JPanel implements Observer{
         this.setOpaque(true);
         this.setVisible(true);
 
-        txt2.setBackground(Color.BLACK);
-        txt2.setForeground(Color.WHITE);
-        jsp.setBackground(Color.BLACK);
-        jsp.setForeground(Color.WHITE);
+        txt2.setBackground(Color.WHITE);
+        txt2.setForeground(Color.BLACK);
+        jsp.setBackground(Color.WHITE);
+        jsp.setForeground(Color.BLACK);
         jsp.setPreferredSize(new Dimension(350, 185));
         txt2.setEditable(false);
         jsp.getViewport().add(txt2);
@@ -39,12 +39,24 @@ public class TrainDisplay extends JPanel implements Observer{
 
     }
 
+
+
+    public void init(){
+        this.setLayout(new FlowLayout());
+        this.setBackground(Color.WHITE);
+        this.setOpaque(true);
+        this.setVisible(true);
+
+    }
+
     @Override
     public void update() {
         currentTrain = 0;
-        Trainstation s =Trainstation.getInstance();
+        Trainstation s = Trainstation.getInstance();
         ArrayList<Train> trains = s.getTrainList();
-
+        Graphics g = this.getGraphics();
+        g.setColor(Color.WHITE);
+        g.fillRect(0, 0, this.getWidth(), this.getHeight());
         for (Train t : trains){
             drawtrain(t.getId());
             currentWagon = 1;
@@ -56,19 +68,31 @@ public class TrainDisplay extends JPanel implements Observer{
         }
 
 
-        }
+    }
 
     private void drawWagon(String id) {
-
-        txt2.append("WAGON" + " " + id);
+        Graphics g = this.getGraphics();
+        g.setColor(Color.LIGHT_GRAY);
+        g.fillRect(30+currentWagon*TRAINLENGTH,80+currentTrain*OFFSET,80,40);
+        g.setColor(Color.BLACK);
+        g.fillRoundRect(35+currentWagon*TRAINLENGTH, 120+currentTrain*OFFSET, 20, 20, 20, 20);
+        g.fillRoundRect(80+currentWagon*TRAINLENGTH, 120+currentTrain*OFFSET, 20, 20, 20, 20);
+        g.drawString(id,40+currentWagon*TRAINLENGTH,105+currentTrain*OFFSET);
 
     }
 
     public void drawtrain(String t) {
-
-        txt2.append("TRAIN " + t + "\n");
-
-
+        this.setBackground(Color.WHITE);
+        Graphics g = this.getGraphics();
+        g.setColor(Color.LIGHT_GRAY);
+        g.fillRect(30,80+currentTrain*OFFSET,80,40);
+        g.fillRect(80,60+currentTrain*OFFSET,30,30);
+        g.drawRoundRect(85, 40+currentTrain*OFFSET, 20, 20, 20, 20);
+        g.drawRoundRect(85, currentTrain*OFFSET, 40, 40, 40, 40);
+        g.setColor(Color.BLACK);
+        g.fillRoundRect(35, 120+currentTrain*OFFSET, 20, 20, 20, 20);
+        g.fillRoundRect(80, 120+currentTrain*OFFSET, 20, 20, 20, 20);
+        g.drawString(t, 40, 105 + currentTrain*OFFSET);
 
 
     }

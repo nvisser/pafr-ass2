@@ -216,9 +216,6 @@ public class Trainstation implements Subject
 	@Override
 	public void notifyObservers()
 	{
-		for (Observer o : observers)
-		{
-			o.update();
-		}
+		observers.forEach(Observer::update);
 	}
 }

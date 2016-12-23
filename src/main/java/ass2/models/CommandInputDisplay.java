@@ -23,8 +23,14 @@ public class CommandInputDisplay extends JPanel implements Observer {
     public void update() {
         Trainstation t = Trainstation.getInstance();
         ArrayList<Train> trains = t.getTrainList();
+        ArrayList<Wagon> wagons = t.getWagonList();
+        txt1.setText("Wagons:\n");
+        for (Wagon wagon : wagons){
 
-        txt1.setText("Trains\n");
+            txt1.setText(txt1.getText()+"("+wagon.getId()+" : "+wagon.getSeats()+")  ");
+        }
+
+        txt1.setText(txt1.getText()+"\nTrains:\n");
         for (Train train : trains){
 
             ArrayList<Wagon> train_wagons = train.getWagonList();

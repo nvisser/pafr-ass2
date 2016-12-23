@@ -3,14 +3,12 @@ package ass2;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.TextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
 import ass2.models.*;
 
-public class GoodRailUI extends JFrame implements ActionListener{
+public class GoodRailUI extends JFrame {
 
 	private TrainDisplay traindisplay = new TrainDisplay();
 	private LoggerDisplay loggerDisplay = new LoggerDisplay();
@@ -47,7 +45,14 @@ public class GoodRailUI extends JFrame implements ActionListener{
 		command_panel.add(command_text_box);
 		command_panel.add(command_button);
 
-		command_button.addActionListener(this);
+		command_button.addActionListener(e -> {
+            if (!command_text_box.equals("")) {
+                String command = command_text_box.getText();
+                commandHandler.parse(command);
+                commandInputDisplay.update();
+                loggerDisplay.update();
+            }
+        });
 
 		main_panel.add(traindisplay, BorderLayout.NORTH);
 		main_panel.add(loggerDisplay, BorderLayout.EAST);
@@ -62,10 +67,6 @@ public class GoodRailUI extends JFrame implements ActionListener{
 
 	}
 
-	public void actionPerformed(ActionEvent e){
-		if(!command_text_box.equals("")){
-			String command = command_text_box.getText();
-			commandHandler.parse(command);
-		}
+
 	}
-}
+

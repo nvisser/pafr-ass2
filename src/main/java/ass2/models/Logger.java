@@ -1,7 +1,5 @@
 package ass2.models;
 
-import ass2.ControllerFX;
-
 import java.util.ArrayList;
 
 public class Logger {

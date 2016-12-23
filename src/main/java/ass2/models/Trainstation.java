@@ -87,10 +87,8 @@ public class Trainstation implements Subject
 
 	public void addTrain(Train t)
 	{
-		t.registerObserver(loggerDisplay);
 		trainList.add(t);
 		this.notifyObservers();
-		t.notifyObservers();
 	}
 
 	/**
@@ -117,6 +115,7 @@ public class Trainstation implements Subject
 	public void addWagon(Wagon w)
 	{
 		wagonList.add(w);
+		this.notifyObservers();
 	}
 
 	/**

@@ -39,5 +39,7 @@ public class Commands
 			}
 		}
 		System.out.println("Unknown command");
+		Trainstation.getInstance().addLogcommand("Unkown command");
+		Trainstation.getInstance().notifyObservers();
 	}
 }

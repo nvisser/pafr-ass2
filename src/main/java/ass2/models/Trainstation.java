@@ -130,11 +130,12 @@ public class Trainstation implements Subject
 	public void removeWagon(Wagon w)
 	{
 		int i = this.wagonList.indexOf(w);
-		if (i > 0)
+		if (i >= 0)
 		{
 			this.notifyObservers();
 			wagonList.remove(i);
 		}
+		this.notifyObservers();
 	}
 
 	/**
@@ -151,7 +152,6 @@ public class Trainstation implements Subject
 
 		if (!train.getWagonList().contains(wagon) && trainLoc >= 0 && wagonLoc >= 0)
 		{
-			this.notifyObservers();
 			// Combine
 			train.addWagon(wagon);
 
@@ -159,6 +159,7 @@ public class Trainstation implements Subject
 			this.trainList.set(trainLoc, train);
 
 		}
+		this.notifyObservers();
 	}
 
 

@@ -48,9 +48,6 @@ public class TrainDisplay extends JPanel implements Observer{
         currentTrain = 0;
         Trainstation s = Trainstation.getInstance();
         ArrayList<Train> trains = s.getTrainList();
-        Graphics g = this.getGraphics();
-        g.setColor(Color.WHITE);
-        g.fillRect(0, 0, this.getWidth(), this.getHeight());
         for (Train t : trains){
             drawtrain(t.getId());
             currentWagon = 1;

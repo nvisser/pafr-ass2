@@ -19,16 +19,6 @@ public class Wagon implements Subject
 		this.id = id;
 	}
 
-	public String getType()
-	{
-		return type;
-	}
-
-	public void setType(String type)
-	{
-		this.type = type;
-	}
-
 	public int getSeats()
 	{
 		return seats;
@@ -42,11 +32,6 @@ public class Wagon implements Subject
 	@Override
 	public void registerObserver(Observer o) {
 		observers.add(o);
-	}
-
-	@Override
-	public void removeObserver(Observer o) {
-		observers.remove(o);
 	}
 
 	@Override

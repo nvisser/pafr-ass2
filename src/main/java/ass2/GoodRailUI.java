@@ -19,7 +19,7 @@ public class GoodRailUI extends JFrame implements ActionListener{
 	private JPanel command_panel = new JPanel();
 	private TextField command_text_box = new TextField("", 40);
 	private JButton command_button = new JButton("Execute");
-	private JPanel main_panel = new JPanel(new BorderLayout());
+	private JPanel main_panel = new JPanel();
 
 	public GoodRailUI(){
 		initGUI();
@@ -37,15 +37,14 @@ public class GoodRailUI extends JFrame implements ActionListener{
 	}
 
 	public void initGUI(){
-		this.setResizable(false);
+
 		main_panel.setLayout(new BorderLayout());
-		main_panel.setSize(new Dimension(800, 600));
+		main_panel.setSize(new Dimension(1000, 800));
 
-
-		traindisplay.setPreferredSize(new Dimension(800, 300));
-		loggerDisplay.setPreferredSize(new Dimension(350, 200));
-		commandInputDisplay.setPreferredSize(new Dimension(350, 200));
-		command_panel.setPreferredSize(new Dimension(400, 100));
+		traindisplay.setPreferredSize(new Dimension(1000, 375));
+		loggerDisplay.setPreferredSize(new Dimension(450, 250));
+		commandInputDisplay.setPreferredSize(new Dimension(450, 250));
+		command_panel.setPreferredSize(new Dimension(500, 125));
 
 		command_panel.add(command_text_box);
 		command_panel.add(command_button);
@@ -59,7 +58,7 @@ public class GoodRailUI extends JFrame implements ActionListener{
 
 		this.getContentPane().add(main_panel);
 
-		this.setSize(800, 600);
+		this.setSize(1000, 800);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 

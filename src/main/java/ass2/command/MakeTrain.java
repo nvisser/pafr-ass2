@@ -22,6 +22,7 @@ public class MakeTrain extends AbstractCommand
 		final Train x = new Train();
 		x.setId(matcher.group(1));
 		Trainstation.getInstance().addTrain(x);
+		Trainstation.getInstance().addOutputCommand("train  " + matcher.group(1) + " created");
 		return true;
 	}
 }

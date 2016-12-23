@@ -23,7 +23,10 @@ public class DeleteTrain extends AbstractCommand
 	{
 		ArrayList<Train> a = Trainstation.getInstance().getTrainList();
 		Optional<Train> found = a.stream().filter((t) -> t.getId().equals(matcher.group(1))).findFirst();
-		found.ifPresent(train -> Trainstation.getInstance().removeTrain(train));
+		found.ifPresent(train -> {
+			Trainstation.getInstance().addOutputCommand("train " + train.getId() + " deleted");
+			Trainstation.getInstance().removeTrain(train);
+		});
 		return true;
 	}
 

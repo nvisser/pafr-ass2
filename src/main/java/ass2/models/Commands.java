@@ -36,6 +36,7 @@ public class Commands
 				System.out.println("[DEBUG] Parsed " + c.getClass().getName());
 				Trainstation.getInstance().addLogcommand(input);
 				c.process(input);
+				Trainstation.getInstance().notifyObservers();
 				return;
 			}
 		}

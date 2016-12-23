@@ -21,7 +21,10 @@ public class DeleteWagon extends AbstractCommand {
 	public boolean executeCommand(Matcher matcher){
 		ArrayList<Wagon> w = Trainstation.getInstance().getWagonList();
 		Optional<Wagon> found = w.stream().filter((z) -> z.getId().equals(matcher.group(1))).findFirst();
-		found.ifPresent(wagon -> Trainstation.getInstance().removeWagon(wagon));
-		return true;
+		found.ifPresent(wagon -> {
+			Trainstation.getInstance().addOutputCommand("wagon " + wagon.getId() + " deleted");
+			Trainstation.getInstance().removeWagon(wagon);
+		});
+		return false;
 	}
 }

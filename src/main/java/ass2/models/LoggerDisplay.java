@@ -26,7 +26,7 @@ public class LoggerDisplay extends JPanel implements Observer {
         txt1.setForeground(Color.WHITE);
         jsp.setBackground(Color.BLACK);
         jsp.setForeground(Color.WHITE);
-        jsp.setPreferredSize(new Dimension(350, 185));
+        jsp.setPreferredSize(new Dimension(500, 275));
         txt1.setEditable(false);
         jsp.getViewport().add(txt1);
         this.add(jsp, BorderLayout.NORTH);
@@ -37,11 +37,7 @@ public class LoggerDisplay extends JPanel implements Observer {
     @Override
     public void update() {
         txt1.setText("");
-        ArrayList<String> allLogs = Trainstation.getInstance().getLog();
-        for (String log : allLogs) {
-            txt1.setText(txt1.getText() + log.toString() + "\n");
-        }
-
-        }
+        ArrayList<String> allOutput = Trainstation.getInstance().getOutputcommands();
+        allOutput.forEach(output -> txt1.setText(txt1.getText() + output + "\n"));
     }
-
+}

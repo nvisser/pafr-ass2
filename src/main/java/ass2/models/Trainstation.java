@@ -13,6 +13,7 @@ public class Trainstation implements Subject
 	private ArrayList<Wagon> wagonList = new ArrayList<Wagon>();
 	private ArrayList<Observer> observers = new ArrayList<>();
 	private ArrayList<String> logcommands = new ArrayList<>();
+	private ArrayList<String> outputcommands = new ArrayList<>();
 
 	public Trainstation(LoggerDisplay logdisplay, TrainDisplay td, CommandInputDisplay cid)
 	{
@@ -49,6 +50,14 @@ public class Trainstation implements Subject
 	public ArrayList<String> getLog()
 	{
 		return logcommands;
+	}
+
+	public ArrayList<String> getOutputcommands(){
+		return outputcommands;
+	}
+
+	public void addOutputCommand(String command){
+		outputcommands.add(command);
 	}
 
 	public void addLogcommand(String logcommand)
@@ -93,7 +102,6 @@ public class Trainstation implements Subject
 		int trainLoc = this.trainList.indexOf(t);
 		if (trainLoc >= 0 && t.getWagonList().size() > 0)
 		{
-			this.notifyObservers();
 			return t.getWagonList().stream().mapToInt(Wagon::getSeats).sum();
 		}
 		return 0;
@@ -240,7 +248,6 @@ public class Trainstation implements Subject
 		}
 		return null;
 	}
-	// getters and setters
 
 	@Override
 	public void registerObserver(Observer o) {
@@ -248,15 +255,9 @@ public class Trainstation implements Subject
 	}
 
 	@Override
-	public void removeObserver(Observer o) {
-		observers.remove(o);
-	}
-
-	@Override
 	public void notifyObservers() {
-		for (int i = 0; i < observers.size(); i++) {
-			Observer observer = (Observer) observers.get(i);
-			observer.update();
+		for (Observer observer1 : observers) {
+			observer1.update();
 		}
 	}
 

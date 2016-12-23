@@ -12,15 +12,15 @@ public class WagonSeats extends AbstractCommand {
     private static final Pattern pattern = Pattern.compile("getnumseats wagon ([a-z][a-z0-9]*);");
 
     @Override
-    protected Pattern getPattern(){
+    protected Pattern getPattern() {
         return pattern;
     }
 
     @Override
-    public boolean executeCommand(Matcher matcher){
+    public boolean executeCommand(Matcher matcher) {
         ArrayList<Wagon> w = Trainstation.getInstance().getWagonList();
         Optional<Wagon> found = w.stream().filter((z) -> z.getId().equals(matcher.group(1))).findFirst();
-        found.ifPresent(wagon -> Trainstation.getInstance().getWagonSeats(wagon));
+        found.ifPresent(wagon -> Trainstation.getInstance().addOutputCommand("number of seats in wagon " + wagon.getId() + ": " + wagon.getSeats()));
         return true;
     }
 }

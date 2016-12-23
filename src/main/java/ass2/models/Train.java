@@ -8,11 +8,6 @@ public class Train implements Subject
 	private ArrayList<Wagon> wagonList = new ArrayList<Wagon>();
 	private ArrayList<Observer> observers = new ArrayList<>();
 
-	public ArrayList<Wagon> getWagonList()
-	{
-		return wagonList;
-	}
-
 	public String getId()
 	{
 		return id;
@@ -23,13 +18,21 @@ public class Train implements Subject
 		this.id = id;
 	}
 
+	public int getSeats(){
+		return 20;
+	}
 
-	public void addWagon(Wagon wa)
+	ArrayList<Wagon> getWagonList()
+	{
+		return wagonList;
+	}
+
+	void addWagon(Wagon wa)
 	{
 		wagonList.add(wa);
 	}
 
-	public void removeWagon(Wagon w)
+	void removeWagon(Wagon w)
 	{
 		int i = this.wagonList.indexOf(w);
 		if (i > 0)
@@ -38,11 +41,6 @@ public class Train implements Subject
 
 	@Override
 	public void registerObserver(Observer o) {
-		observers.add(o);
-	}
-
-	@Override
-	public void removeObserver(Observer o) {
 		observers.add(o);
 	}
 

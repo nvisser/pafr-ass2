@@ -21,18 +21,18 @@ public class GoodRailUI extends JFrame implements ActionListener{
 	private JButton command_button = new JButton("Execute");
 	private JPanel main_panel = new JPanel();
 
-	public static void main(String[] args)
-	{
-		GoodRailUI inst = new GoodRailUI();
-		inst.setLocationRelativeTo(null);
-		inst.setVisible(true);
-	}
-
 	public GoodRailUI(){
 		initGUI();
 		Trainstation.getInstance(traindisplay, commandInputDisplay, loggerDisplay);
 		Trainstation.getInstance().registerObserver(loggerDisplay);
 		Trainstation.getInstance().registerObserver(commandInputDisplay);
+	}
+
+	public static void main(String[] args)
+	{
+		GoodRailUI inst = new GoodRailUI();
+		inst.setLocationRelativeTo(null);
+		inst.setVisible(true);
 	}
 
 	public void initGUI(){
@@ -59,12 +59,13 @@ public class GoodRailUI extends JFrame implements ActionListener{
 
 		this.setSize(800, 600);
 		this.setVisible(true);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 	}
 
 	public void actionPerformed(ActionEvent e){
-		if(!command_text_box.equals("")){
+		if (!command_text_box.getText().isEmpty())
+		{
 			String command = command_text_box.getText();
 			commandHandler.parse(command);
 		}

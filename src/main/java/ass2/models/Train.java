@@ -48,9 +48,6 @@ public class Train implements Subject
 
 	@Override
 	public void notifyObservers() {
-		for (int i = 0; i < observers.size(); i++) {
-			Observer observer = observers.get(i);
-			observer.update();
-		}
+		observers.forEach(Observer::update);
 	}
 }

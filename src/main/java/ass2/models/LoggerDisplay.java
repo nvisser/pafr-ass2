@@ -35,10 +35,9 @@ public class LoggerDisplay extends JPanel implements Observer {
 
     @Override
     public void update() {
-        txt1.setText("hallo");
         ArrayList<String> allLogs = Trainstation.getInstance().getLogger().getLogcommands();
         for (String log : allLogs) {
-            txt1.setText(txt1.getText() + log.length() + "\n");
+            txt1.setText(txt1.getText() + log.toString() + "\n");
         }
     }
 }

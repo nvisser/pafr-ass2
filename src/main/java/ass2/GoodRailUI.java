@@ -50,7 +50,6 @@ public class GoodRailUI extends JFrame {
                 String command = command_text_box.getText();
                 commandHandler.parse(command);
                 commandInputDisplay.update();
-//                Trainstation.getInstance().getLoggerDisplay().update();
             }
         });
 

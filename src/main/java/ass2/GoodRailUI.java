@@ -26,6 +26,7 @@ public class GoodRailUI extends JFrame implements ActionListener{
 		Trainstation.getInstance(traindisplay, commandInputDisplay, loggerDisplay);
 		Trainstation.getInstance().registerObserver(loggerDisplay);
 		Trainstation.getInstance().registerObserver(commandInputDisplay);
+		Trainstation.getInstance().registerObserver(traindisplay);
 	}
 
 	public static void main(String[] args)

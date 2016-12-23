@@ -50,4 +50,10 @@ public class Train implements Subject
 	public void notifyObservers() {
 		observers.forEach(Observer::update);
 	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		return obj instanceof Train && ((Train) obj).getId().equals(this.getId()) && ((Train) obj).getWagonList().equals(this.getWagonList());
+	}
 }

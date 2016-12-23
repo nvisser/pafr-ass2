@@ -4,11 +4,10 @@ import java.util.ArrayList;
 
 public class Trainstation implements Subject
 {
+	private static Trainstation instance;
 	private CommandInputDisplay commandInputDisplay = new CommandInputDisplay();
 	private LoggerDisplay loggerDisplay = new LoggerDisplay();
 	private TrainDisplay trainDisplay = new TrainDisplay();
-
-	private static Trainstation instance;
 	private ArrayList<Train> trainList = new ArrayList<Train>();
 	private ArrayList<Wagon> wagonList = new ArrayList<Wagon>();
 	private ArrayList<Observer> observers = new ArrayList<>();
@@ -74,8 +73,10 @@ public class Trainstation implements Subject
 	 */
 	public void addTrain(Train t)
 	{
-		t.registerObserver(loggerDisplay);
+		if (trainList.contains(t))
+			return;
 		trainList.add(t);
+		t.registerObserver(loggerDisplay);
 		this.notifyObservers();
 		t.notifyObservers();
 	}
@@ -103,6 +104,8 @@ public class Trainstation implements Subject
 	 */
 	public void addWagon(Wagon w)
 	{
+		if (wagonList.contains(w))
+			return;
 		wagonList.add(w);
 	}
 
@@ -199,18 +202,22 @@ public class Trainstation implements Subject
 	}
 
 	@Override
-	public void registerObserver(Observer o) {
+	public void registerObserver(Observer o)
+	{
 		observers.add(o);
 	}
 
 	@Override
-	public void removeObserver(Observer o) {
+	public void removeObserver(Observer o)
+	{
 		observers.remove(o);
 	}
 
 	@Override
-	public void notifyObservers() {
-		for (int i = 0; i < observers.size(); i++) {
+	public void notifyObservers()
+	{
+		for (int i = 0; i < observers.size(); i++)
+		{
 			Observer observer = (Observer) observers.get(i);
 			observer.update();
 		}

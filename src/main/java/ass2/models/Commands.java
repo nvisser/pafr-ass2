@@ -14,7 +14,6 @@ public class Commands
 		commands.add(new MakeTrain());
 		commands.add(new MakeWagon());
 		commands.add(new DeleteTrain());
-		commands.add(new DeleteWagon());
 		commands.add(new AddWagon());
 		commands.add(new RemoveWagon());
 		commands.add(new WagonSeats());
@@ -34,7 +33,7 @@ public class Commands
 			if (c.canProcess(input))
 			{
 				System.out.println("[DEBUG] Parsed " + c.getClass().getName());
-				Trainstation.getInstance().getLogger().addLogcommand(input);
+				Trainstation.getInstance().addLogcommand(input);
 				c.process(input);
 				return;
 			}

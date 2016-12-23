@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import java.util.Collections;
 import javax.swing.JScrollPane;
 
+@SuppressWarnings("serial")
 public class LoggerDisplay extends JPanel implements Observer {
     private JTextArea txt1 = new JTextArea();
     private JScrollPane jsp = new JScrollPane();
@@ -35,10 +36,12 @@ public class LoggerDisplay extends JPanel implements Observer {
 
     @Override
     public void update() {
-        ArrayList<String> allLogs = Trainstation.getInstance().getLogger().getLogcommands();
+        txt1.setText("");
+        ArrayList<String> allLogs = Trainstation.getInstance().getLog();
         for (String log : allLogs) {
             txt1.setText(txt1.getText() + log.toString() + "\n");
         }
+
+        }
     }
-}
 

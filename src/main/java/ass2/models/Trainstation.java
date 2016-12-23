@@ -4,34 +4,38 @@ import java.util.ArrayList;
 
 public class Trainstation implements Subject
 {
+	private static CommandInputDisplay commandInputDisplay;
+	private static LoggerDisplay loggerDisplay;
+	private static TrainDisplay trainDisplay;
+
 	private static Trainstation instance;
-	private CommandInputDisplay commandInputDisplay = new CommandInputDisplay();
-	private Logger logger = new Logger();
-	private LoggerDisplay loggerDisplay = new LoggerDisplay();
-	private TrainDisplay trainDisplay = new TrainDisplay();
 	private ArrayList<Train> trainList = new ArrayList<Train>();
 	private ArrayList<Wagon> wagonList = new ArrayList<Wagon>();
 	private ArrayList<Observer> observers = new ArrayList<>();
+	private ArrayList<String> logcommands = new ArrayList<>();
 
-	private Trainstation()
+	public Trainstation(LoggerDisplay logdisplay, TrainDisplay td, CommandInputDisplay cid)
 	{
-		// Don't make me bro
+		setLoggerDisplay(logdisplay);
+		setCommandInputDisplay(cid);
+		setTrainDisplay(td);
 	}
 
-	public Logger getLogger() {
-		return logger;
+	public ArrayList<String> getLog(){
+		return logcommands;
 	}
 
-	public LoggerDisplay getLoggerDisplay() {
-		return loggerDisplay;
+	public void addLogcommand(String logcommand) {
+		logcommands.add(logcommand);
 	}
 
-	public static Trainstation getInstance()
-	{
+	public static synchronized Trainstation getInstance(TrainDisplay imgdsply, CommandInputDisplay lstdsply, LoggerDisplay lgdsply){
 		if (instance == null)
-		{
-			instance = new Trainstation();
-		}
+			instance = new Trainstation(lgdsply, imgdsply, lstdsply);
+		return instance;
+	}
+
+	public static synchronized Trainstation getInstance(){
 		return instance;
 	}
 
@@ -80,12 +84,11 @@ public class Trainstation implements Subject
 	 *
 	 * @param t Train
 	 */
+
 	public void addTrain(Train t)
 	{
-		if (trainList.contains(t))
-			return;
-		trainList.add(t);
 		t.registerObserver(loggerDisplay);
+		trainList.add(t);
 		this.notifyObservers();
 		t.notifyObservers();
 	}
@@ -113,8 +116,6 @@ public class Trainstation implements Subject
 	 */
 	public void addWagon(Wagon w)
 	{
-		if (wagonList.contains(w))
-			return;
 		wagonList.add(w);
 	}
 
@@ -211,20 +212,32 @@ public class Trainstation implements Subject
 	}
 
 	@Override
-	public void registerObserver(Observer o)
-	{
+	public void registerObserver(Observer o) {
 		observers.add(o);
 	}
 
 	@Override
-	public void removeObserver(Observer o)
-	{
+	public void removeObserver(Observer o) {
 		observers.remove(o);
 	}
 
 	@Override
-	public void notifyObservers()
-	{
-		observers.forEach(Observer::update);
+	public void notifyObservers() {
+		for (int i = 0; i < observers.size(); i++) {
+			Observer observer = (Observer) observers.get(i);
+			observer.update();
+		}
 	}
+	// getters and setters
+
+	public static void setLoggerDisplay(LoggerDisplay loggerDisplay){
+		Trainstation.loggerDisplay = loggerDisplay;
+	}
+	public static void setCommandInputDisplay(CommandInputDisplay commandInputDisplay){
+		Trainstation.commandInputDisplay = commandInputDisplay;
+	}
+	public static void setTrainDisplay (TrainDisplay trainDisplay){
+		Trainstation.trainDisplay = trainDisplay;
+	}
+
 }

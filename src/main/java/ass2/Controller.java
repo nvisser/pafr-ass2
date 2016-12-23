@@ -1,6 +1,7 @@
 package ass2;
 
 import ass2.models.Observer;
+import javafx.beans.Observable;
 
 import java.util.ArrayList;
 import java.util.List;

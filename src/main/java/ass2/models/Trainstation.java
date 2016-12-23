@@ -21,14 +21,6 @@ public class Trainstation implements Subject
 		setTrainDisplay(td);
 	}
 
-	public ArrayList<String> getLog(){
-		return logcommands;
-	}
-
-	public void addLogcommand(String logcommand) {
-		logcommands.add(logcommand);
-	}
-
 	public static synchronized Trainstation getInstance(TrainDisplay imgdsply, CommandInputDisplay lstdsply, LoggerDisplay lgdsply){
 		if (instance == null)
 			instance = new Trainstation(lgdsply, imgdsply, lstdsply);
@@ -37,6 +29,31 @@ public class Trainstation implements Subject
 
 	public static synchronized Trainstation getInstance(){
 		return instance;
+	}
+
+	public static void setLoggerDisplay(LoggerDisplay loggerDisplay)
+	{
+		Trainstation.loggerDisplay = loggerDisplay;
+	}
+
+	public static void setCommandInputDisplay(CommandInputDisplay commandInputDisplay)
+	{
+		Trainstation.commandInputDisplay = commandInputDisplay;
+	}
+
+	public static void setTrainDisplay(TrainDisplay trainDisplay)
+	{
+		Trainstation.trainDisplay = trainDisplay;
+	}
+
+	public ArrayList<String> getLog()
+	{
+		return logcommands;
+	}
+
+	public void addLogcommand(String logcommand)
+	{
+		logcommands.add(logcommand);
 	}
 
 	public ArrayList<Train> getTrainList()
@@ -90,6 +107,8 @@ public class Trainstation implements Subject
 
 	public void addTrain(Train t)
 	{
+		if (trainList.contains(t))
+			return;
 		trainList.add(t);
 		this.notifyObservers();
 	}
@@ -110,7 +129,6 @@ public class Trainstation implements Subject
 
 	}
 
-
 	/**
 	 * Add a wagon
 	 *
@@ -118,6 +136,8 @@ public class Trainstation implements Subject
 	 */
 	public void addWagon(Wagon w)
 	{
+		if (wagonList.contains(w))
+			return;
 		wagonList.add(w);
 		this.notifyObservers();
 	}
@@ -161,8 +181,6 @@ public class Trainstation implements Subject
 		}
 		this.notifyObservers();
 	}
-
-
 
 	/**
 	 * Remove wagon from trian
@@ -222,6 +240,7 @@ public class Trainstation implements Subject
 		}
 		return null;
 	}
+	// getters and setters
 
 	@Override
 	public void registerObserver(Observer o) {
@@ -239,17 +258,6 @@ public class Trainstation implements Subject
 			Observer observer = (Observer) observers.get(i);
 			observer.update();
 		}
-	}
-	// getters and setters
-
-	public static void setLoggerDisplay(LoggerDisplay loggerDisplay){
-		Trainstation.loggerDisplay = loggerDisplay;
-	}
-	public static void setCommandInputDisplay(CommandInputDisplay commandInputDisplay){
-		Trainstation.commandInputDisplay = commandInputDisplay;
-	}
-	public static void setTrainDisplay (TrainDisplay trainDisplay){
-		Trainstation.trainDisplay = trainDisplay;
 	}
 
 }

@@ -58,8 +58,10 @@ public class Trainstation implements Subject
 	public int getWagonSeats(Wagon w)
 	{
 		int wagonLoc = this.wagonList.indexOf(w);
-		if (wagonLoc >= 0)
+		if (wagonLoc >= 0){
+			this.notifyObservers();
 			return w.getSeats();
+		}
 		return 0;
 	}
 
@@ -74,6 +76,7 @@ public class Trainstation implements Subject
 		int trainLoc = this.trainList.indexOf(t);
 		if (trainLoc >= 0 && t.getWagonList().size() > 0)
 		{
+			this.notifyObservers();
 			return t.getWagonList().stream().mapToInt(Wagon::getSeats).sum();
 		}
 		return 0;
@@ -102,6 +105,7 @@ public class Trainstation implements Subject
 		if (i > 0)
 		{
 			trainList.remove(i);
+			this.notifyObservers();
 		}
 
 	}
@@ -128,6 +132,7 @@ public class Trainstation implements Subject
 		int i = this.wagonList.indexOf(w);
 		if (i > 0)
 		{
+			this.notifyObservers();
 			wagonList.remove(i);
 		}
 	}
@@ -146,11 +151,13 @@ public class Trainstation implements Subject
 
 		if (!train.getWagonList().contains(wagon) && trainLoc >= 0 && wagonLoc >= 0)
 		{
+			this.notifyObservers();
 			// Combine
 			train.addWagon(wagon);
 
 			// Replace in list
 			this.trainList.set(trainLoc, train);
+
 		}
 	}
 
@@ -166,6 +173,7 @@ public class Trainstation implements Subject
 		int wagonLoc = this.wagonList.indexOf(wagon);
 		if (train.getWagonList().contains(wagon) && trainLoc >= 0 && wagonLoc >= 0)
 		{
+			this.notifyObservers();
 			// Unlink
 			train.removeWagon(wagon);
 
@@ -186,6 +194,7 @@ public class Trainstation implements Subject
 		{
 			if (t.getId().equals(id))
 			{
+				this.notifyObservers();
 				return t;
 			}
 		}
@@ -204,6 +213,7 @@ public class Trainstation implements Subject
 		{
 			if (n.getId().equals(id))
 			{
+				this.notifyObservers();
 				return n;
 			}
 		}

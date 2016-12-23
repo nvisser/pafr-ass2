@@ -24,19 +24,13 @@ public class TrainDisplay extends JPanel implements Observer{
 
     public  TrainDisplay (){
         this.setLayout(new BorderLayout());
-        this.setBackground(Color.BLACK);
         this.setOpaque(true);
         this.setVisible(true);
 
         txt2.setBackground(Color.WHITE);
         txt2.setForeground(Color.BLACK);
-        jsp.setBackground(Color.WHITE);
-        jsp.setForeground(Color.BLACK);
-        jsp.setPreferredSize(new Dimension(350, 185));
         txt2.setEditable(false);
-        jsp.getViewport().add(txt2);
-        this.add(jsp, BorderLayout.NORTH);
-
+        init();
     }
 
 
@@ -82,7 +76,6 @@ public class TrainDisplay extends JPanel implements Observer{
     }
 
     public void drawtrain(String t) {
-        this.setBackground(Color.WHITE);
         Graphics g = this.getGraphics();
         g.setColor(Color.LIGHT_GRAY);
         g.fillRect(30,80+currentTrain*OFFSET,80,40);

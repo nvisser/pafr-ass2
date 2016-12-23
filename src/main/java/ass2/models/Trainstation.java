@@ -216,10 +216,9 @@ public class Trainstation implements Subject
 	@Override
 	public void notifyObservers()
 	{
-		for (int i = 0; i < observers.size(); i++)
+		for (Observer o : observers)
 		{
-			Observer observer = (Observer) observers.get(i);
-			observer.update();
+			o.update();
 		}
 	}
 }

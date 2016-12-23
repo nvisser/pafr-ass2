@@ -19,7 +19,7 @@ public class GoodRailUI extends JFrame implements ActionListener{
 	private JPanel command_panel = new JPanel();
 	private TextField command_text_box = new TextField("", 40);
 	private JButton command_button = new JButton("Execute");
-	private JPanel main_panel = new JPanel();
+	private JPanel main_panel = new JPanel(new BorderLayout());
 
 	public GoodRailUI(){
 		initGUI();
@@ -37,9 +37,10 @@ public class GoodRailUI extends JFrame implements ActionListener{
 	}
 
 	public void initGUI(){
-
+		this.setResizable(false);
 		main_panel.setLayout(new BorderLayout());
 		main_panel.setSize(new Dimension(800, 600));
+
 
 		traindisplay.setPreferredSize(new Dimension(800, 300));
 		loggerDisplay.setPreferredSize(new Dimension(350, 200));

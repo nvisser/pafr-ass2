@@ -8,10 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import java.awt.Dimension;
-import java.util.Collections;
 import javax.swing.JScrollPane;
 
-@SuppressWarnings("serial")
+
 public class LoggerDisplay extends JPanel implements Observer {
     private JTextArea txt1 = new JTextArea();
     private JScrollPane jsp = new JScrollPane();

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-@SuppressWarnings("serial")
+
 public class CommandInputDisplay extends JPanel implements Observer {
     private JTextArea txt1 = new JTextArea();
     public CommandInputDisplay(){

@@ -21,7 +21,7 @@ public class GoodRailUI extends JFrame implements ActionListener{
 	private JButton command_button = new JButton("Execute");
 	private JPanel main_panel = new JPanel();
 
-	public GoodRailUI(){
+	private GoodRailUI(){
 		initGUI();
 		Trainstation.getInstance(traindisplay, commandInputDisplay, loggerDisplay);
 		Trainstation.getInstance().registerObserver(loggerDisplay);
@@ -36,7 +36,7 @@ public class GoodRailUI extends JFrame implements ActionListener{
 		inst.setVisible(true);
 	}
 
-	public void initGUI(){
+	private void initGUI(){
 
 		main_panel.setLayout(new BorderLayout());
 		main_panel.setSize(new Dimension(1000, 800));

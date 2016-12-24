@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Train implements Subject
 {
 	private String id;
-	private ArrayList<Wagon> wagonList = new ArrayList<Wagon>();
+	private ArrayList<Wagon> wagonList = new ArrayList<>();
 	private ArrayList<Observer> observers = new ArrayList<>();
 
 	public String getId()
@@ -31,7 +31,7 @@ public class Train implements Subject
 	void removeWagon(Wagon w)
 	{
 		int i = this.wagonList.indexOf(w);
-		if (i > 0)
+		if (i >= 0)
 			wagonList.remove(i);
 	}
 

@@ -1,6 +1,5 @@
 package ass2.command;
 
-import ass2.models.Train;
 import ass2.models.Trainstation;
 import ass2.models.Wagon;
 

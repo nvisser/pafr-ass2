@@ -9,8 +9,8 @@ public class Trainstation implements Subject
 	private static TrainDisplay trainDisplay;
 
 	private static Trainstation instance;
-	private ArrayList<Train> trainList = new ArrayList<Train>();
-	private ArrayList<Wagon> wagonList = new ArrayList<Wagon>();
+	private ArrayList<Train> trainList = new ArrayList<>();
+	private ArrayList<Wagon> wagonList = new ArrayList<>();
 	private ArrayList<Observer> observers = new ArrayList<>();
 	private ArrayList<String> logcommands = new ArrayList<>();
 	private ArrayList<String> outputcommands = new ArrayList<>();
@@ -32,17 +32,17 @@ public class Trainstation implements Subject
 		return instance;
 	}
 
-	public static void setLoggerDisplay(LoggerDisplay loggerDisplay)
+	private static void setLoggerDisplay(LoggerDisplay loggerDisplay)
 	{
 		Trainstation.loggerDisplay = loggerDisplay;
 	}
 
-	public static void setCommandInputDisplay(CommandInputDisplay commandInputDisplay)
+	private static void setCommandInputDisplay(CommandInputDisplay commandInputDisplay)
 	{
 		Trainstation.commandInputDisplay = commandInputDisplay;
 	}
 
-	public static void setTrainDisplay(TrainDisplay trainDisplay)
+	private static void setTrainDisplay(TrainDisplay trainDisplay)
 	{
 		Trainstation.trainDisplay = trainDisplay;
 	}
@@ -52,7 +52,7 @@ public class Trainstation implements Subject
 		return logcommands;
 	}
 
-	public ArrayList<String> getOutputcommands(){
+	ArrayList<String> getOutputcommands(){
 		return outputcommands;
 	}
 
@@ -60,7 +60,7 @@ public class Trainstation implements Subject
 		outputcommands.add(command);
 	}
 
-	public void addLogcommand(String logcommand)
+	void addLogcommand(String logcommand)
 	{
 		logcommands.add(logcommand);
 	}
@@ -73,22 +73,6 @@ public class Trainstation implements Subject
 	public ArrayList<Wagon> getWagonList()
 	{
 		return wagonList;
-	}
-
-	/**
-	 * Return seats for a wagon
-	 *
-	 * @param w Wagon
-	 * @return int
-	 */
-	public int getWagonSeats(Wagon w)
-	{
-		int wagonLoc = this.wagonList.indexOf(w);
-		if (wagonLoc >= 0){
-			this.notifyObservers();
-			return w.getSeats();
-		}
-		return 0;
 	}
 
 	/**
@@ -118,7 +102,6 @@ public class Trainstation implements Subject
 		if (trainList.contains(t))
 			return;
 		trainList.add(t);
-		this.notifyObservers();
 	}
 
 	/**
@@ -129,10 +112,9 @@ public class Trainstation implements Subject
 	public void removeTrain(Train t)
 	{
 		int i = this.trainList.indexOf(t);
-		if (i > 0)
+		if (i >= 0)
 		{
 			trainList.remove(i);
-			this.notifyObservers();
 		}
 
 	}
@@ -147,7 +129,6 @@ public class Trainstation implements Subject
 		if (wagonList.contains(w))
 			return;
 		wagonList.add(w);
-		this.notifyObservers();
 	}
 
 	/**
@@ -160,10 +141,8 @@ public class Trainstation implements Subject
 		int i = this.wagonList.indexOf(w);
 		if (i >= 0)
 		{
-			this.notifyObservers();
 			wagonList.remove(i);
 		}
-		this.notifyObservers();
 	}
 
 	/**
@@ -178,8 +157,7 @@ public class Trainstation implements Subject
 		int wagonLoc = this.wagonList.indexOf(wagon);
 
 
-		if (!train.getWagonList().contains(wagon) && trainLoc >= 0 && wagonLoc >= 0)
-		{
+		if (!train.getWagonList().contains(wagon) && trainLoc >= 0 && wagonLoc >= 0) {
 			// Combine
 			train.addWagon(wagon);
 
@@ -187,7 +165,6 @@ public class Trainstation implements Subject
 			this.trainList.set(trainLoc, train);
 
 		}
-		this.notifyObservers();
 	}
 
 	/**
@@ -202,7 +179,6 @@ public class Trainstation implements Subject
 		int wagonLoc = this.wagonList.indexOf(wagon);
 		if (train.getWagonList().contains(wagon) && trainLoc >= 0 && wagonLoc >= 0)
 		{
-			this.notifyObservers();
 			// Unlink
 			train.removeWagon(wagon);
 
@@ -223,7 +199,6 @@ public class Trainstation implements Subject
 		{
 			if (t.getId().equals(id))
 			{
-				this.notifyObservers();
 				return t;
 			}
 		}
@@ -242,7 +217,6 @@ public class Trainstation implements Subject
 		{
 			if (n.getId().equals(id))
 			{
-				this.notifyObservers();
 				return n;
 			}
 		}

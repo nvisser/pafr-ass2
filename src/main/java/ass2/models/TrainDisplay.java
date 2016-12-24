@@ -5,21 +5,12 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-
-@SuppressWarnings("serial")
 public class TrainDisplay extends JPanel implements Observer{
 
 
-
-    private JTextArea txt2 = new JTextArea();
-    private JScrollPane jsp = new JScrollPane();
     private int currentTrain=0;
     private int OFFSET=120;
     private int currentWagon = 0;
-    private int TRAINLENGTH = 100;
-
-
-
 
 
     public  TrainDisplay (){
@@ -27,6 +18,7 @@ public class TrainDisplay extends JPanel implements Observer{
         this.setOpaque(true);
         this.setVisible(true);
 
+        JTextArea txt2 = new JTextArea();
         txt2.setBackground(Color.WHITE);
         txt2.setForeground(Color.BLACK);
         txt2.setEditable(false);
@@ -35,7 +27,7 @@ public class TrainDisplay extends JPanel implements Observer{
 
 
 
-    public void init(){
+    private void init(){
         this.setLayout(new FlowLayout());
         this.setBackground(Color.WHITE);
         this.setOpaque(true);
@@ -64,15 +56,16 @@ public class TrainDisplay extends JPanel implements Observer{
     private void drawWagon(String id) {
         Graphics g = this.getGraphics();
         g.setColor(Color.LIGHT_GRAY);
-        g.fillRect(30+currentWagon*TRAINLENGTH,80+currentTrain*OFFSET,80,40);
+        int TRAINLENGTH = 100;
+        g.fillRect(30+currentWagon* TRAINLENGTH,80+currentTrain*OFFSET,80,40);
         g.setColor(Color.BLACK);
-        g.fillRoundRect(35+currentWagon*TRAINLENGTH, 120+currentTrain*OFFSET, 20, 20, 20, 20);
-        g.fillRoundRect(80+currentWagon*TRAINLENGTH, 120+currentTrain*OFFSET, 20, 20, 20, 20);
-        g.drawString(id,40+currentWagon*TRAINLENGTH,105+currentTrain*OFFSET);
+        g.fillRoundRect(35+currentWagon* TRAINLENGTH, 120+currentTrain*OFFSET, 20, 20, 20, 20);
+        g.fillRoundRect(80+currentWagon* TRAINLENGTH, 120+currentTrain*OFFSET, 20, 20, 20, 20);
+        g.drawString(id,40+currentWagon* TRAINLENGTH,105+currentTrain*OFFSET);
 
     }
 
-    public void drawtrain(String t) {
+    private void drawtrain(String t) {
         Graphics g = this.getGraphics();
         g.setColor(Color.LIGHT_GRAY);
         g.fillRect(30,80+currentTrain*OFFSET,80,40);

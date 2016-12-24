@@ -18,10 +18,6 @@ public class Train implements Subject
 		this.id = id;
 	}
 
-	public int getSeats(){
-		return 20;
-	}
-
 	ArrayList<Wagon> getWagonList()
 	{
 		return wagonList;

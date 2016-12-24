@@ -22,8 +22,7 @@ public class TrainSeats extends AbstractCommand {
         ArrayList<Train> a = Trainstation.getInstance().getTrainList();
         Optional<Train> found = a.stream().filter((t) -> t.getId().equals(matcher.group(1))).findFirst();
         found.ifPresent(train -> {
-            Trainstation.getInstance().addOutputCommand("Number of seats in train " + train.getId() + ": " + train.getSeats());
-            Trainstation.getInstance().getWagonSeats(train);
+            Trainstation.getInstance().addOutputCommand("Number of seats in train " + train.getId() + ": " + Trainstation.getInstance().getWagonSeats(train));
         });
 
         return true;
